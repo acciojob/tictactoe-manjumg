@@ -12,6 +12,13 @@ let player1 = "";
 let player2 = "";
 let gameOver = false;
 
+// Track game state for win checking
+const boardState = {
+  1: "", 2: "", 3: "",
+  4: "", 5: "", 6: "",
+  7: "", 8: "", 9: ""
+};
+
 const winningCombinations = [
   [1, 2, 3],
   [4, 5, 6],
@@ -38,13 +45,16 @@ submitBtn.addEventListener("click", () => {
 
 cells.forEach(cell => {
   cell.addEventListener("click", () => {
+    const cellId = parseInt(cell.id);
+
     if (cell.textContent !== "" || gameOver) return;
 
     cell.textContent = currentPlayer;
+    boardState[cellId] = currentPlayer;
 
     if (checkWin(currentPlayer)) {
-      const winnerName = currentPlayer === "x" ? player1 : player2;
-      messageDiv.textContent = `${winnerName}, congratulations you won!`;
+      const winner = currentPlayer === "x" ? player1 : player2;
+      messageDiv.textContent = `${winner} congratulations you won!`;
       gameOver = true;
       return;
     }
@@ -56,11 +66,7 @@ cells.forEach(cell => {
 });
 
 function checkWin(symbol) {
-  const selected = Array.from(cells)
-    .filter(cell => cell.textContent === symbol)
-    .map(cell => parseInt(cell.id));
-
   return winningCombinations.some(combination =>
-    combination.every(num => selected.includes(num))
+    combination.every(cell => boardState[cell] === symbol)
   );
 }
