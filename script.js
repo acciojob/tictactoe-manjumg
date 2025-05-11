@@ -1,6 +1,5 @@
-//your JS code here. If required.
-const player1Input = document.getElementById("player-1");
-const player2Input = document.getElementById("player-2");
+const player1Input = document.getElementById("player1");
+const player2Input = document.getElementById("player2");
 const submitBtn = document.getElementById("submit");
 
 const inputSection = document.getElementById("input-section");
@@ -8,7 +7,7 @@ const gameSection = document.getElementById("game-section");
 const messageDiv = document.getElementById("message");
 const cells = document.querySelectorAll(".cell");
 
-let currentPlayer = "X";
+let currentPlayer = "x";
 let player1 = "";
 let player2 = "";
 let gameOver = false;
@@ -24,7 +23,6 @@ const winningCombinations = [
   [3, 5, 7],
 ];
 
-// Start game
 submitBtn.addEventListener("click", () => {
   player1 = player1Input.value.trim();
   player2 = player2Input.value.trim();
@@ -45,21 +43,21 @@ cells.forEach(cell => {
     cell.textContent = currentPlayer;
 
     if (checkWin(currentPlayer)) {
-      const winnerName = currentPlayer === "X" ? player1 : player2;
+      const winnerName = currentPlayer === "x" ? player1 : player2;
       messageDiv.textContent = `${winnerName}, congratulations you won!`;
       gameOver = true;
       return;
     }
 
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
-    const nextPlayer = currentPlayer === "X" ? player1 : player2;
+    currentPlayer = currentPlayer === "x" ? "o" : "x";
+    const nextPlayer = currentPlayer === "x" ? player1 : player2;
     messageDiv.textContent = `${nextPlayer}, you're up`;
   });
 });
 
-function checkWin(playerSymbol) {
+function checkWin(symbol) {
   const selected = Array.from(cells)
-    .filter(cell => cell.textContent === playerSymbol)
+    .filter(cell => cell.textContent === symbol)
     .map(cell => parseInt(cell.id));
 
   return winningCombinations.some(combination =>

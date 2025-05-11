@@ -1,6 +1,5 @@
-/*  your css code here. If applicable */
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: Arial, sans-serif;
   background: #f0f0f0;
   display: flex;
   justify-content: center;
@@ -14,8 +13,8 @@ body {
   background: white;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  width: 300px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 320px;
 }
 
 .input-section input {

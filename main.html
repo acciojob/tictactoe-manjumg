@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Multiplayer Tic Tac Toe</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
-    <!-- Input Section -->
+    <!-- Player name input section -->
     <div class="input-section" id="input-section">
       <h2>Enter Player Names</h2>
-      <input type="text" id="player-1" placeholder="Player 1 Name" />
-      <input type="text" id="player-2" placeholder="Player 2 Name" />
+      <input type="text" id="player1" placeholder="Player 1 Name" />
+      <input type="text" id="player2" placeholder="Player 2 Name" />
       <button id="submit">Submit</button>
     </div>
 
-    <!-- Game Section -->
+    <!-- Game board section -->
     <div class="game-section hidden" id="game-section">
       <h1>Tic Tac Toe</h1>
       <div class="message" id="message"></div>
       <div class="board" id="board">
-        <!-- 9 cells -->
         <div class="cell" id="1"></div>
         <div class="cell" id="2"></div>
         <div class="cell" id="3"></div>
